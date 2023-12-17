@@ -21,3 +21,12 @@ def get_access_token(client_id, client_secret):
 
 access_token = get_access_token(CLIENT_ID, CLIENT_SECRET)
 print(access_token)
+
+def get_saved_tracks(access_token):
+    url = "https://api.spotify.com/v1/me/tracks"
+    headers = {"Authorization": f"Bearer {access_token}"}
+    r = requests.get(url, headers=headers)
+    return r.json()
+
+saved_tracks = get_saved_tracks(access_token)
+print(saved_tracks)
